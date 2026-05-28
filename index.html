@@ -131,15 +131,16 @@ function GAMark({size=22, bg="#0A2150", ink="#FFFFFF", flat=false, radius=14}){
 
 /* ===== JOURNEY DATA ===== */
 const journeys=[
-{id:"new",group:"journey",label:"Новый клиент",desc:"Выпуск Аэрофлот Кошелька · пополнение · оплата",steps:[
-  {title:"Точка входа",zone:"Аэрофлот Бонус",screen:"ga_checkout",desc:"Клиент оформляет заказ в приложении Аэрофлота. На чек-ауте — оффер «+1000 миль при оплате Аэрофлот Кошельком», встроенный в оформление заказа.",metricPartner:"Рост конверсии чек-аута: бонусный оффер в момент оплаты",metricBank:"Присутствие Аэрофлот Кошелька в покупательском пути Аэрофлота"},
+{id:"new",group:"journey",label:"Новый клиент",desc:"Выпуск Аэрофлот Кошелька · онлайн-идентификация · пополнение · оплата",steps:[
+  {title:"Точка входа",zone:"Аэрофлот Бонус",screen:"ga_checkout_high",desc:"Клиент оформляет заказ в приложении Аэрофлота. На чек-ауте — оффер «+1000 миль при оплате Аэрофлот Кошельком», встроенный в оформление заказа.",metricPartner:"Рост конверсии чек-аута: бонусный оффер в момент оплаты",metricBank:"Присутствие Аэрофлот Кошелька в покупательском пути Аэрофлота"},
   {title:"Оффер + согласия",zone:"Аэрофлот Бонус → Банк",screen:"offer_consents",desc:"Экран оффера: мили за каждую оплату кошельком. Согласие клиента на передачу реквизитов и банковской тайны, памятка ЭДС, СОПД.",metricPartner:"Бонусы для клиента — за счёт экономии на эквайринге, а не из маржи Аэрофлота",metricBank:"Подключение к Аэрофлот Кошельку прямо в канале партнёра"},
   {title:"Идентификация клиента",zone:"Банк",screen:"identify",desc:"Ввод номера телефона и кода из СМС. Идентификация реализуется во встроенном WebView либо нативно — полностью в контуре приложения Аэрофлота.",metricPartner:"Идентификация за секунды — клиент не покидает приложение",metricBank:"Идентификация без визита в отделение"},
   {title:"Анкета на открытие",zone:"Банк",screen:"form",desc:"ФИО и дата рождения. Поля предзаполнены из данных партнёра — клиенту не нужно вводить вручную.",metricPartner:"Заявка занимает меньше минуты — поля предзаполнены",metricBank:"Выпуск кошелька без отделения и курьера"},
-  {title:"Кошелёк выпущен",zone:"Банк",screen:"issued",desc:"Моментальный выпуск Аэрофлот Кошелька с предложением пополнить и оплатить. Без выпуска пластика.",metricPartner:"Клиент готов к оплате сразу после выпуска",metricBank:"Моментальный выпуск Аэрофлот Кошелька"},
-  {title:"Пополнение кошелька",zone:"Банк",screen:"topup_c2b",desc:"Пополнение кошелька с карты другого банка через платёжный шлюз (C2B). Достаточно суммы заказа.",metricPartner:"Оплата проходит здесь же — клиент не уходит с чек-аута",metricBank:"Рост остатков на кошельках Аэрофлот Кошелёк"},
+  {title:"Кошелёк выпущен",zone:"Банк",screen:"issued_limit",desc:"Аэрофлот Кошелёк выпущен моментально в цифровом тарифе. На старте для нового клиента действует лимит 15 000 ₽. Чтобы оплатить заказ выше этой суммы, клиенту предлагается пройти онлайн-идентификацию.",metricPartner:"Клиент уже получил кошелёк в канале Аэрофлота — следующий шаг снимает лимит для оплаты среднего чека",metricBank:"Выпуск цифрового кошелька до доидентификации — продукт создан и готов к повышению статуса"},
+  {title:"Онлайн-идентификация",zone:"Банк · Госуслуги · WebView",screen:"online_id",desc:"После выпуска кошелька клиент проходит онлайн-идентификацию через сервисы банка: авторизуется в Госуслугах, даёт согласие на передачу данных, делает селфи, фотографирует страницу паспорта и указывает адрес проживания. После проверки лимиты снимаются.",metricPartner:"Клиент может оплатить заказ выше 15 000 ₽ без ухода из приложения и без смены способа оплаты",metricBank:"Банк переводит клиента из базового цифрового тарифа в полноценно идентифицированный статус с расширенным платёжным потенциалом"},
+  {title:"Пополнение кошелька",zone:"Банк",screen:"topup_c2b_high",desc:"После успешной онлайн-идентификации клиент пополняет кошелёк с карты другого банка через платёжный шлюз (C2B). Достаточно суммы заказа.",metricPartner:"Оплата проходит здесь же — клиент не уходит с чек-аута",metricBank:"Рост остатков на кошельках Аэрофлот Кошелёк"},
   {title:"Привязка к Аэрофлот Кошельку",zone:"Банк → Аэрофлот Бонус",screen:"bind",desc:"Реквизиты кошелька автоматически передаются в Аэрофлот Бонус. Аэрофлот Кошелёк появляется как способ оплаты — без ручного ввода реквизитов.",metricPartner:"Привязка автоматическая — без ручного ввода реквизитов",metricBank:"Аэрофлот Кошелёк закрепляется как способ оплаты у партнёра"},
-  {title:"Оплата на чек-ауте",zone:"Аэрофлот Бонус",screen:"pay_bonus",desc:"Клиент платит Аэрофлот Кошельком. Вместо скидки — начисление миль: +1000 за оплату. Заказ оплачен.",metricPartner:"Начисление миль повышает ценность каждой покупки",metricBank:"Активный кошелёк — начало транзакционной активности"},
+  {title:"Оплата на чек-ауте",zone:"Аэрофлот Бонус",screen:"pay_bonus_high",desc:"Клиент платит Аэрофлот Кошельком после снятия лимитов. Вместо скидки — начисление миль: +1000 за оплату. Заказ оплачен.",metricPartner:"Начисление миль повышает ценность каждой покупки",metricBank:"Активный кошелёк — начало транзакционной активности"},
 ]},
 {id:"existing",group:"journey",label:"Действующий клиент",desc:"Подключение кошелька · выбор карты · оплата",steps:[
   {title:"Точка входа",zone:"Аэрофлот Бонус",screen:"ga_checkout",desc:"На чек-ауте Аэрофлота — оффер «+1000 миль при оплате Аэрофлот Кошельком». Клиент уже клиент Альфа-Банка.",metricPartner:"Готовая база клиентов Альфа-Банка — простое подключение Аэрофлот Кошелёк",metricBank:"Рост активности клиентов через новый канал"},
@@ -281,6 +282,23 @@ const PTitle = ({t,s})=>(
 
 /* ===== SCREENS ===== */
 const SCREENS = {
+  ga_checkout_high:{title:"Чек-аут · Аэрофлот Бонус", render:()=>(
+    <div style={{padding:"14px 16px",display:"flex",flexDirection:"column",gap:11}}>
+      <div style={{display:"flex",alignItems:"center",gap:8}}>
+        <GAMark size={22} radius={6}/>
+        <span style={{fontSize:11,fontWeight:700,color:"var(--phone-text-1)",letterSpacing:".02em"}}>Аэрофлот Бонус</span>
+      </div>
+      <div style={{border:"1px solid var(--phone-line-1)",borderRadius:12,padding:"11px 13px"}}>
+        <div style={{fontSize:10,color:"var(--phone-text-2)",textTransform:"uppercase",letterSpacing:".06em"}}>Ваш заказ</div>
+        <div style={{fontSize:12,color:"var(--phone-text-1)",marginTop:5,fontWeight:600}}>Авиабилет · Москва — Сочи</div>
+        <div style={{fontSize:10,color:"var(--phone-text-2)",marginTop:2}}>в одну сторону · эконом</div>
+        <div className="num" style={{fontSize:22,fontWeight:800,color:"var(--phone-text-1)",letterSpacing:"-.02em",marginTop:6}}>24 990 ₽</div>
+      </div>
+      <Bonus/>
+      <div style={{fontSize:10.5,color:"var(--phone-text-2)",lineHeight:1.35,marginTop:-2}}>Для оплаты Аэрофлот Кошельком после выпуска потребуется онлайн-идентификация</div>
+      <div style={{marginTop:2}}>{PBtn("Оформить заказ","dark")}</div>
+    </div>
+  )},
   ga_checkout:{title:"Чек-аут · Аэрофлот Бонус", render:()=>(
     <div style={{padding:"14px 16px",display:"flex",flexDirection:"column",gap:11}}>
       <div style={{display:"flex",alignItems:"center",gap:8}}>
@@ -354,6 +372,76 @@ const SCREENS = {
       <div style={{display:"flex",gap:8}}>
         <div style={{flex:1}}>{PBtn("Пополнить","dark")}</div>
         <div style={{flex:1}}>{PBtn("Оплатить","lime")}</div>
+      </div>
+    </div>
+  )},
+  issued_limit:{title:"Кошелёк выпущен", render:()=>(
+    <div style={{padding:16,textAlign:"center"}}>
+      <TickCircle/>
+      <div style={{fontSize:16,fontWeight:700,color:"var(--phone-text-1)",letterSpacing:"-.02em"}}>Аэрофлот Кошелёк выпущен</div>
+      <div style={{fontSize:11,color:"var(--phone-text-2)",margin:"6px 0 11px",lineHeight:1.4}}>Сейчас действует лимит 15 000 ₽. Для оплаты этого заказа нужно пройти онлайн-идентификацию.</div>
+      <div style={{marginBottom:11,textAlign:"left"}}><WalletCard balance="0 ₽"/></div>
+      <div style={{background:"var(--phone-surf)",borderRadius:12,padding:"10px 11px",textAlign:"left",marginBottom:12}}>
+        <PRow l="Лимит сейчас" v="15 000 ₽"/>
+        <PRow l="Сумма заказа" v="24 990 ₽" last={true} strong={true}/>
+      </div>
+      {PBtn("Снять лимиты","dark")}
+    </div>
+  )},
+  online_id:{title:"Онлайн-идентификация", render:()=>{
+    const items=[
+      {n:"Вход в Госуслуги",d:"авторизация через приложение партнёра"},
+      {n:"Согласие",d:"передача данных в банк"},
+      {n:"Селфи",d:"проверка живого присутствия"},
+      {n:"Фото паспорта",d:"страница с основными данными"},
+      {n:"Адрес проживания",d:"для завершения анкеты"},
+    ];
+    return (
+    <div style={{padding:16}}>
+      <PTitle t="Онлайн-идентификация" s="Снимем лимиты для оплаты заказа"/>
+      <div style={{margin:"11px 0 12px",padding:"10px 12px",background:"var(--lime)",borderRadius:12,color:"var(--ink-1)",textAlign:"left"}}>
+        <div style={{fontSize:10,fontWeight:800,textTransform:"uppercase",letterSpacing:".07em",opacity:.7}}>Заказ выше лимита</div>
+        <div style={{fontSize:12.5,fontWeight:700,lineHeight:1.3,marginTop:3}}>Пройдите проверку через сервисы банка — после неё можно пополнить кошелёк и оплатить билет.</div>
+      </div>
+      <div style={{display:"flex",flexDirection:"column",gap:7}}>
+        {items.map((it,i)=>(
+          <div key={i} style={{display:"flex",gap:9,alignItems:"flex-start",padding:"8px 0",borderBottom:i<items.length-1?"1px solid var(--phone-line-1)":"none"}}>
+            <span className="num" style={{width:20,height:20,borderRadius:"50%",background:i<2?"var(--lime)":"var(--phone-surf)",border:"1px solid var(--phone-line-1)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:800,color:"var(--ink-1)",flexShrink:0}}>{i+1}</span>
+            <span style={{flex:1}}>
+              <div style={{fontSize:12,fontWeight:700,color:"var(--phone-text-1)",lineHeight:1.2}}>{it.n}</div>
+              <div style={{fontSize:9.5,color:"var(--phone-text-2)",marginTop:1,lineHeight:1.25}}>{it.d}</div>
+            </span>
+          </div>
+        ))}
+      </div>
+      <div style={{fontSize:9,color:"var(--phone-text-3)",margin:"9px 0 12px",lineHeight:1.35}}>После проверки клиент становится полноценно идентифицированным, а лимиты кошелька снимаются.</div>
+      {PBtn("Пройти идентификацию","dark")}
+    </div>
+    );
+  }},
+  topup_c2b_high:{title:"Пополнение кошелька", render:()=>(
+    <div style={{padding:16}}>
+      <PTitle t="Пополнение кошелька" s="С карты другого банка"/>
+      <div style={{marginTop:12,marginBottom:12}}><WalletCard balance="0 ₽" soft={true}/></div>
+      {[{l:"Сумма",v:"24 990 ₽"},{l:"Комиссия",v:"0 ₽"},{l:"Откуда",v:"Т-Банк ····8901"},{l:"Куда",v:"Аэрофлот Кошелёк ····4567",last:true}].map((r,i)=>(<PRow key={i} {...r}/>))}
+      <div style={{marginTop:14}}>{PBtn("Пополнить и оплатить","dark")}</div>
+    </div>
+  )},
+  pay_bonus_high:{title:"Оплата на чек-ауте", render:()=>(
+    <div style={{padding:16,textAlign:"center"}}>
+      <TickCircle/>
+      <div style={{fontSize:16,fontWeight:700,color:"var(--phone-text-1)",letterSpacing:"-.02em"}}>Заказ оплачен</div>
+      <div style={{fontSize:11,color:"var(--phone-text-2)",margin:"6px 0 13px"}}>Оплата прошла через Аэрофлот Кошелёк</div>
+      <div style={{textAlign:"left",borderTop:"1px solid var(--phone-line-1)",paddingTop:8}}>
+        <PRow l="Сумма заказа" v="24 990 ₽"/>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 0",borderBottom:"1px solid var(--phone-line-1)"}}>
+          <span style={{fontSize:12,color:"var(--phone-text-1)",fontWeight:600}}>Начислено миль</span>
+          <span className="num" style={{background:"var(--lime)",borderRadius:8,padding:"3px 9px",fontSize:12,fontWeight:800,color:"var(--ink-1)"}}>+1000</span>
+        </div>
+        <div style={{display:"flex",justifyContent:"space-between",padding:"11px 0 0",alignItems:"baseline"}}>
+          <span style={{fontSize:12,fontWeight:600,color:"var(--phone-text-1)"}}>Оплачено</span>
+          <span className="num" style={{fontSize:22,fontWeight:800,color:"var(--phone-text-1)",letterSpacing:"-.02em"}}>24 990 ₽</span>
+        </div>
       </div>
     </div>
   )},
