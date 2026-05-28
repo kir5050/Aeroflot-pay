@@ -136,8 +136,8 @@ const journeys=[
   {title:"Оффер + согласия",zone:"Аэрофлот Бонус → Банк",screen:"offer_consents",desc:"Экран оффера: мили за каждую оплату кошельком. Согласие клиента на передачу реквизитов и банковской тайны, памятка ЭДС, СОПД.",metricPartner:"Бонусы для клиента — за счёт экономии на эквайринге, а не из маржи Аэрофлота",metricBank:"Подключение к Аэрофлот Кошельку прямо в канале партнёра"},
   {title:"Идентификация клиента",zone:"Банк",screen:"identify",desc:"Ввод номера телефона и кода из СМС. Идентификация реализуется во встроенном WebView либо нативно — полностью в контуре приложения Аэрофлота.",metricPartner:"Идентификация за секунды — клиент не покидает приложение",metricBank:"Идентификация без визита в отделение"},
   {title:"Анкета на открытие",zone:"Банк",screen:"form",desc:"ФИО и дата рождения. Поля предзаполнены из данных партнёра — клиенту не нужно вводить вручную.",metricPartner:"Заявка занимает меньше минуты — поля предзаполнены",metricBank:"Выпуск кошелька без отделения и курьера"},
-  {title:"Кошелёк выпущен",zone:"Банк",screen:"issued_limit",desc:"Аэрофлот Кошелёк выпущен моментально в цифровом тарифе. На старте для нового клиента действует лимит 15 000 ₽. Чтобы оплатить заказ выше этой суммы, клиенту предлагается пройти онлайн-идентификацию.",metricPartner:"Клиент уже получил кошелёк в канале Аэрофлота — следующий шаг снимает лимит для оплаты среднего чека",metricBank:"Выпуск цифрового кошелька до доидентификации — продукт создан и готов к повышению статуса"},
-  {title:"Онлайн-идентификация",zone:"Банк · Госуслуги · WebView",screen:"online_id",desc:"После выпуска кошелька клиент проходит онлайн-идентификацию через сервисы банка: авторизуется в Госуслугах, даёт согласие на передачу данных, делает селфи, фотографирует страницу паспорта и указывает адрес проживания. После проверки лимиты снимаются.",metricPartner:"Клиент может оплатить заказ выше 15 000 ₽ без ухода из приложения и без смены способа оплаты",metricBank:"Банк переводит клиента из базового цифрового тарифа в полноценно идентифицированный статус с расширенным платёжным потенциалом"},
+  {title:"Кошелёк выпущен",zone:"Банк",screen:"issued_limit",desc:"Аэрофлот Кошелёк выпущен моментально в цифровом тарифе. На старте для нового клиента действует лимит 15 000 ₽. Чтобы оплатить заказ выше этой суммы, клиенту предлагается пройти онлайн-идентификацию.",metricPartner:"Клиент уже получил кошелёк в канале Аэрофлота — следующий шаг снимает лимит для оплаты среднего чека",metricBank:"Банк получает нового клиента и первый открытый продукт в партнёрском канале Аэрофлота"},
+  {title:"Онлайн-идентификация",zone:"Банк · Госуслуги · WebView",screen:"online_id",desc:"После выпуска кошелька клиент проходит онлайн-идентификацию через сервисы банка: авторизуется в Госуслугах, даёт согласие на передачу данных, делает селфи, фотографирует страницу паспорта и указывает адрес проживания. После успешной проверки лимиты снимаются.",metricPartner:"Клиент может оплатить заказ выше 15 000 ₽ без ухода из приложения и без смены способа оплаты",metricBank:"Альфа-Банк предоставляет технологию доидентификации и переводит клиента в полноценный платёжный статус после успешной проверки"},
   {title:"Пополнение кошелька",zone:"Банк",screen:"topup_c2b_high",desc:"После успешной онлайн-идентификации клиент пополняет кошелёк с карты другого банка через платёжный шлюз (C2B). Достаточно суммы заказа.",metricPartner:"Оплата проходит здесь же — клиент не уходит с чек-аута",metricBank:"Рост остатков на кошельках Аэрофлот Кошелёк"},
   {title:"Привязка к Аэрофлот Кошельку",zone:"Банк → Аэрофлот Бонус",screen:"bind",desc:"Реквизиты кошелька автоматически передаются в Аэрофлот Бонус. Аэрофлот Кошелёк появляется как способ оплаты — без ручного ввода реквизитов.",metricPartner:"Привязка автоматическая — без ручного ввода реквизитов",metricBank:"Аэрофлот Кошелёк закрепляется как способ оплаты у партнёра"},
   {title:"Оплата на чек-ауте",zone:"Аэрофлот Бонус",screen:"pay_bonus_high",desc:"Клиент платит Аэрофлот Кошельком после снятия лимитов. Вместо скидки — начисление миль: +1000 за оплату. Заказ оплачен.",metricPartner:"Начисление миль повышает ценность каждой покупки",metricBank:"Активный кошелёк — начало транзакционной активности"},
@@ -162,19 +162,45 @@ const journeys=[
   {title:"Заказ пластика",zone:"Банк",screen:"delivery",desc:"Заказ пластиковой карты курьером или в отделении. После активации — автоматическая привязка к способу оплаты Аэрофлот Кошелёк.",metricPartner:"Пластик с предустановленной привязкой к Аэрофлот Кошелёк",metricBank:"Долгосрочная активация клиента"},
   {title:"Привязка и оплата",zone:"Аэрофлот Бонус",screen:"pay_bonus",desc:"После активации кошелька — автоматическая передача реквизитов и привязка к способу оплаты Аэрофлот Кошелёк. Оплата с начислением миль.",metricPartner:"Регулярные покупки с начислением миль",metricBank:"Активный клиент с кошельком и транзакционной историей"},
 ]},
-{id:"payment",group:"capability",label:"Оплата кошельком",desc:"Оплата Аэрофлот Кошельком — онлайн",steps:[
-    {title:"Клиент выбрал рейс",zone:"Аэрофлот Бонус · online",screen:"shop_product",desc:"Клиент выбирает рейс в приложении Аэрофлота. Подсвечивается выгода оплаты через Аэрофлот Кошелёк: +1000 миль.",metricPartner:"Выгода Аэрофлот Кошелька видна уже в карточке рейса",metricBank:"Узнаваемость Аэрофлот Кошелька в каталоге партнёра"},
+{id:"online_identity",group:"capability",label:"Онлайн-идентификация",desc:"Технология Альфа-Банка для снятия лимитов внутри партнёрского сценария",steps:[
+  {title:"Зачем нужна идентификация",zone:"Аэрофлот Бонус → Банк",screen:"id_value",desc:"Аэрофлоту важно закрывать средний чек выше 15 000 ₽. Альфа-Банк предоставляет сервис онлайн-идентификации, который позволяет клиенту повысить статус кошелька без офиса и без выхода из приложения.",metricPartner:"Клиент остаётся в сценарии покупки и получает возможность оплатить билет выше базового лимита",metricBank:"Банк предоставляет партнёру технологический сервис, который конвертирует цифровой кошелёк в полноценный платёжный продукт"},
+  {title:"Вход через Госуслуги",zone:"Банк · Госуслуги",screen:"id_gosuslugi",desc:"Клиент авторизуется через Госуслуги и даёт согласие на передачу данных в банк для подтверждения личности.",metricPartner:"Процесс выглядит привычно и доверенно для клиента",metricBank:"Сервис банка получает подтверждённые данные для дальнейшей проверки"},
+  {title:"Селфи и паспорт",zone:"Банк",screen:"id_bio",desc:"Клиент делает селфи и фотографирует страницу паспорта. Проверка проходит в банковском контуре.",metricPartner:"Весь процесс проходит в мобильном сценарии, без визита в офис",metricBank:"Банк снижает риск и повышает качество клиентского профиля"},
+  {title:"Адрес проживания",zone:"Банк",screen:"id_address",desc:"Клиент указывает адрес проживания. После проверки статус кошелька обновляется, лимиты снимаются.",metricPartner:"Клиент сразу возвращается к оплате билета",metricBank:"После успешной проверки клиент становится полноценным идентифицированным клиентом"},
+  {title:"Лимиты сняты",zone:"Банк → Аэрофлот Бонус",screen:"id_done",desc:"Клиент видит подтверждение, что лимиты сняты, и может пополнить кошелёк на сумму заказа.",metricPartner:"Дорогой заказ не теряется из-за лимита базового кошелька",metricBank:"Повышение статуса клиента открывает больший транзакционный потенциал"},
+]},
+{id:"payment",group:"capability",label:"Оплата кошельком",desc:"Оплата онлайн, в полёте и в аэропорту",steps:[
+    {title:"Онлайн-покупка билета",zone:"Аэрофлот Бонус · online",screen:"shop_product",desc:"Клиент выбирает рейс в приложении Аэрофлота. Подсвечивается выгода оплаты через Аэрофлот Кошелёк: +1000 миль.",metricPartner:"Выгода Аэрофлот Кошелька видна уже в карточке рейса",metricBank:"Узнаваемость Аэрофлот Кошелька в каталоге партнёра"},
     {title:"Добавил в корзину",zone:"Аэрофлот Бонус · online",screen:"cart",desc:"Билет в корзине. Баннер «+1000 миль при оплате Аэрофлот Кошельком» рядом с итоговой суммой.",metricPartner:"Бонусный баннер в корзине — стимул завершить заказ",metricBank:"Напоминание об Аэрофлот Кошельке в корзине"},
     {title:"Перешёл в оформление",zone:"Аэрофлот Бонус · online",screen:"checkout_methods",desc:"Оформление заказа, выбор способа оплаты среди СБП, SberPay, Яндекс Пэй и Аэрофлот Кошелёк.",metricPartner:"Аэрофлот Кошелёк — в списке способов оплаты",metricBank:"Присутствие среди привычных способов оплаты"},
-    {title:"Аэрофлот Кошелёк предустановлен",zone:"Аэрофлот Бонус · online",screen:"method_selected",desc:"Аэрофлот Кошелёк выбран способом оплаты по умолчанию — клиенту не нужно искать его в списке.",metricPartner:"Предустановленный способ оплаты ускоряет чек-аут",metricBank:"Приоритет Аэрофлот Кошелёк по умолчанию"},
-    {title:"Оплатил Аэрофлот Кошельком",zone:"Аэрофлот Бонус · online",screen:"paid",desc:"Оплата прошла в один тап. +1000 миль начислено на счёт лояльности.",metricPartner:"Оплата в один тап, бонусы начислены",metricBank:"Завершённая транзакция по Аэрофлот Кошельку"},
+    {title:"Оплатил билет",zone:"Аэрофлот Бонус · online",screen:"paid",desc:"Оплата прошла в один тап. +1000 миль начислено на счёт лояльности.",metricPartner:"Оплата в один тап, бонусы начислены",metricBank:"Завершённая транзакция по Аэрофлот Кошельку"},
+    {title:"Покупка во время полёта",zone:"Борт · offline QR",screen:"flight_catalog",desc:"В полёте клиент выбирает товар или питание. При ограниченном интернете бортовая система генерирует QR для списания с Аэрофлот Кошелька.",metricPartner:"Аэрофлот получает дополнительный платёжный сценарий там, где обычный онлайн-эквайринг недоступен",metricBank:"Кошелёк становится инструментом платежей за пределами классического онлайн-чек-аута"},
+    {title:"QR работает без интернета",zone:"Борт · offline QR",screen:"flight_qr",desc:"QR содержит параметры покупки: рейс, сумма, merchant ID, срок действия и одноразовый токен. Клиент подтверждает оплату в приложении, а операция резервируется до синхронизации.",metricPartner:"Покупка возможна даже при ограниченной связи на борту",metricBank:"После появления связи операция синхронизируется и списывается с кошелька"},
+    {title:"Списание и синхронизация",zone:"Банк · Аэрофлот",screen:"flight_sync",desc:"После восстановления связи бортовая система и банк сверяют токен, сумму и рейс. Средства списываются с кошелька, клиент получает чек и мили.",metricPartner:"Контроль списания привязан к конкретному рейсу и покупке",metricBank:"Снижение риска повторного списания за счёт одноразового токена и сверки операции"},
+    {title:"Покупки в аэропорту",zone:"Аэропорт · retail",screen:"airport_offer",desc:"В магазинах, кафе и сервисах аэропорта клиент видит дополнительную выгоду при оплате Аэрофлот Кошельком — например, повышенный кэшбэк в милях.",metricPartner:"Кошелёк расширяет присутствие Аэрофлота в аэропортовой инфраструктуре",metricBank:"Рост частоты транзакций по кошельку вне покупки билета"},
+    {title:"Оплата в аэропорту",zone:"Аэропорт · retail",screen:"airport_paid",desc:"Клиент оплачивает покупку кошельком и получает повышенные мили. Остаток на кошельке сохраняется для будущих поездок и покупок.",metricPartner:"Клиент возвращает остатки в будущие покупки внутри экосистемы Аэрофлота",metricBank:"Транзакционный сценарий продлевается за пределы билета"},
   ]},
-{id:"manage",group:"capability",label:"Управление",desc:"Управление Аэрофлот Кошельком в профиле клиента",steps:[
+{id:"refunds",group:"capability",label:"Возвраты",desc:"Мгновенные возвраты билетов и компенсации при задержках",steps:[
+  {title:"Возврат билета",zone:"Аэрофлот Бонус",screen:"refund_ticket",desc:"При отмене рейса и официальном решении о возврате клиенту предлагается мгновенный возврат средств на Аэрофлот Кошелёк.",metricPartner:"У клиента появляется быстрый и понятный способ получить деньги без ожидания стандартного возврата на карту",metricBank:"Средства возвращаются на кошелёк и могут быть использованы для будущих покупок"},
+  {title:"Мгновенное зачисление",zone:"Кошелёк",screen:"refund_instant",desc:"Деньги поступают на кошелёк сразу после подтверждения возврата со стороны Аэрофлота. Клиент видит зачисление в истории операций.",metricPartner:"Снижается негатив от отмены рейса: клиент быстро видит деньги и может купить новый билет",metricBank:"Кошелёк становится основным счётом для сервисных выплат партнёра"},
+  {title:"Процесс для партнёра",zone:"Аэрофлот → Банк",screen:"refund_partner",desc:"Для Аэрофлота процесс строится по конкретному рейсу и номеру кошелька: партнёр подтверждает возврат, банк зачисляет средства на нужный кошелёк.",metricPartner:"Возврат можно делать точечно: по рейсу, заказу и кошельку клиента",metricBank:"Интеграция делает кошелёк сервисным инструментом партнёрских выплат"},
+  {title:"Задержка рейса",zone:"Аэрофлот Бонус",screen:"delay_notice",desc:"При задержке рейса клиент получает уведомление: на кошелёк начислены средства для воды, питания или другой поддержки в рамках правил обслуживания пассажиров.",metricPartner:"Аэрофлот может быстро оказать поддержку клиенту без ручной выдачи ваучеров",metricBank:"Кошелёк используется как быстрый канал целевых начислений"},
+  {title:"Компенсация в кошельке",zone:"Кошелёк",screen:"delay_credit",desc:"Клиент видит зачисление, назначение выплаты и где её можно использовать. Уведомление сохраняется в истории кошелька.",metricPartner:"Клиент понимает, что происходит, и получает помощь в одном привычном интерфейсе",metricBank:"Рост доверия к кошельку как к помощнику в нестандартных ситуациях"},
+]},
+{id:"manage",group:"capability",label:"Управление",desc:"Кошелёк как личный кабинет и помощник пассажира",steps:[
   {title:"Доступ в профиле",zone:"Аэрофлот Бонус",screen:"profile_access",desc:"Аэрофлот Кошелёк доступен в профиле клиента в приложении Аэрофлота — рядом с бонусами и картой лояльности.",metricPartner:"Кошелёк всегда под рукой в приложении Аэрофлота",metricBank:"Регулярные заходы в Аэрофлот Кошелёк"},
-  {title:"Управление кошельком",zone:"Кошелёк",screen:"wallet_home",desc:"Баланс миль, история операций и быстрые действия с картой на главном экране кошелька.",metricPartner:"Прозрачный баланс миль и история операций",metricBank:"Вовлечённость в кошелёк"},
+  {title:"Главная кошелька",zone:"Кошелёк",screen:"wallet_home",desc:"Баланс, мили, история операций и быстрые действия с картой на главном экране кошелька.",metricPartner:"Прозрачный баланс и история операций",metricBank:"Вовлечённость в кошелёк"},
+  {title:"Уведомления по рейсу",zone:"Кошелёк · помощник",screen:"wallet_notifications",desc:"Кошелёк информирует клиента о важных событиях: перенос рейса, возврат, компенсация, изменение расписания.",metricPartner:"Кошелёк становится каналом заботы и информирования пассажира",metricBank:"Рост регулярного использования кошелька как сервисного раздела"},
+  {title:"Возвраты и компенсации",zone:"Кошелёк",screen:"wallet_refunds",desc:"В личном кабинете видны начисления по отмене или задержке рейса: сумма, назначение, рейс и статус.",metricPartner:"Клиент понимает, за что начислены средства и куда обращаться",metricBank:"Сервисные выплаты закрепляют кошелёк как основной клиентский счёт"},
   {title:"Пополнение / перевод",zone:"Кошелёк",screen:"wallet_topup",desc:"Пополнить со счёта в другом банке, со счёта в Альфа-Банке или настроить автопополнение.",metricPartner:"Пополнение в пару тапов — деньги готовы к покупке",metricBank:"Рост остатков на кошельке"},
+  {title:"Безопасность",zone:"Кошелёк",screen:"wallet_security",desc:"В личном кабинете есть информер о безопасности: кошелёк — часть цифровой инфраструктуры Аэрофлота и банковского контура Альфа-Банка.",metricPartner:"Повышается доверие к кошельку как к продукту Аэрофлота",metricBank:"Снижается барьер использования банковского продукта в партнёрском интерфейсе"},
   {title:"Действия с картой",zone:"Кошелёк",screen:"wallet_actions",desc:"Изменить пин-код, заморозить или закрыть карту, посмотреть тарифы и условия, настроить автопополнение.",metricPartner:"Полное самообслуживание по карте",metricBank:"Снижение нагрузки на поддержку"},
   {title:"Реквизиты",zone:"Кошелёк",screen:"wallet_requisites",desc:"Просмотр и копирование реквизитов карты — номер, срок, CVC под защитой.",metricPartner:"Реквизиты под рукой для любых платежей",metricBank:"Удобство использования кошелька"},
+]},
+{id:"security",group:"capability",label:"Безопасность",desc:"Доверие к кошельку как к продукту Аэрофлота и банковскому сервису",steps:[
+  {title:"Кошелёк в инфраструктуре Аэрофлота",zone:"Аэрофлот Бонус",screen:"security_main",desc:"Клиент видит, что кошелёк встроен в приложение Аэрофлота, связан с программой лояльности и обслуживается в банковском контуре Альфа-Банка.",metricPartner:"Доверие к продукту выше, потому что он воспринимается как часть экосистемы Аэрофлота",metricBank:"Банковский сервис получает доверие через партнёрский интерфейс"},
+  {title:"Защита операций",zone:"Банк",screen:"security_ops",desc:"Операции подтверждаются кодом, биометрией или одноразовым токеном. Реквизиты и CVC скрыты, критичные действия требуют подтверждения.",metricPartner:"Клиенту проще использовать кошелёк для покупок и возвратов",metricBank:"Снижение рисков по операциям и повышение доверия к продукту"},
+  {title:"Контроль в личном кабинете",zone:"Кошелёк",screen:"wallet_security",desc:"В кошельке собраны уведомления, история операций, заморозка, реквизиты и статус безопасности.",metricPartner:"Клиент понимает, где контролировать все действия по кошельку",metricBank:"Самообслуживание снижает нагрузку на поддержку"},
 ]},
 {id:"installment",group:"capability",label:"Рассрочка",desc:"Оплата частями с Аэрофлот Кошельком — 4 платежа без переплаты",steps:[
   {title:"Оффер рассрочки",zone:"Аэрофлот Бонус",screen:"inst_offer",desc:"На чек-ауте — «Оплата частями с Аэрофлот Кошельком»: разбейте заказ на 4 платежа без переплаты.",metricPartner:"Рассрочка повышает доступность дорогих покупок",metricBank:"Новый платёжный инструмент в канале партнёра"},
@@ -192,6 +218,8 @@ const benefitsClient=[
 ];
 const benefitsPartner=[
   {icon:"trend",title:"Экономия на эквайринге",desc:"Оплата через Аэрофлот Кошелёк выгоднее для Аэрофлота, чем сторонние способы на чек-ауте",accent:"эквайринг"},
+  {icon:"wallet",title:"Остатки для будущих покупок",desc:"Клиенты используют остатки на кошельке не для вывода, а для следующих покупок билетов, услуг и товаров в экосистеме Аэрофлота"},
+  {icon:"id",title:"Онлайн-идентификация",desc:"Технология Альфа-Банка позволяет доидентифицировать клиента внутри сценария Аэрофлота и снять лимит для оплаты среднего чека"},
   {icon:"users",title:"Новые клиенты",desc:"Готовая аудитория Альфа-Банка подключается прямо в канале Аэрофлота"},
   {icon:"chart",title:"Частота покупок и средний чек",desc:"Совместная лояльность мотивирует возвращаться и покупать больше"},
   {icon:"sparkle",title:"Совместные предложения",desc:"Бонусы клиенту финансируются за счёт экономии на эквайринге — не из маржи партнёра"},
@@ -218,6 +246,14 @@ const ICONS={
   wallet:<><path d="M3 7a2 2 0 012-2h12a2 2 0 012 2M3 7v10a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2H5a2 2 0 01-2-2zM17 13h.01"/></>,
   trend:<><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></>,
   data:<><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></>,
+  id:<><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="12" cy="10" r="2.2"/><path d="M8 16c.8-2 7.2-2 8 0"/></>,
+  qr:<><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><path d="M15 15h2v2h-2zM19 15h2M15 19h6v2"/></>,
+  plane:<><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></>,
+  bell:<><path d="M18 8a6 6 0 00-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></>,
+  shield:<><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5L16 9"/></>,
+  refund:<><path d="M4 7h12a4 4 0 010 8H8"/><path d="M8 11l-4-4 4-4"/><path d="M12 19h8"/></>,
+  food:<><path d="M6 3v8M9 3v8M6 7h3M14 3v18M18 3v7a4 4 0 01-4 4"/></>,
+  airport:<><path d="M3 20h18"/><path d="M5 20V9l7-5 7 5v11"/><path d="M9 20v-6h6v6"/></>,
   arrow_r:<><path d="M5 12h14M13 5l7 7-7 7"/></>,
   arrow_l:<><path d="M19 12H5M11 5l-7 7 7 7"/></>,
   restart:<><path d="M3 12a9 9 0 109-9 9 9 0 00-7 3.5M3 3v4h4"/></>,
@@ -638,6 +674,198 @@ const SCREENS = {
       </div>
     </div>
   )},
+  id_value:{title:"Онлайн-идентификация", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Технология Альфа-Банка" s="Снятие лимитов внутри сценария Аэрофлота"/>
+      <div style={{margin:"12px 0",padding:14,background:"var(--lime)",borderRadius:14,color:"var(--ink-1)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:9,marginBottom:8}}><Ico d={ICONS.id} size={20}/><b style={{fontSize:13}}>Онлайн-идентификация</b></div>
+        <div style={{fontSize:11.5,lineHeight:1.45,fontWeight:600}}>Сервис банка помогает повысить статус кошелька без офиса, чтобы клиент мог оплатить заказ выше 15 000 ₽.</div>
+      </div>
+      {[{l:"Базовый лимит",v:"15 000 ₽"},{l:"Сценарий",v:"без выхода из приложения"},{l:"Результат",v:"лимиты сняты"}].map((r,i)=><PRow key={i} {...r} last={i===2}/>) }
+      <div style={{marginTop:14}}>{PBtn("Начать идентификацию","dark")}</div>
+    </div>
+  )},
+  id_gosuslugi:{title:"Госуслуги", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Вход через Госуслуги" s="Подтверждение данных клиента"/>
+      <div style={{height:84,borderRadius:14,background:"var(--phone-surf)",display:"flex",alignItems:"center",justifyContent:"center",margin:"14px 0"}}>
+        <div style={{width:52,height:52,borderRadius:14,background:"#fff",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 8px 24px rgba(0,0,0,.06)"}}><Ico d={ICONS.id} size={26}/></div>
+      </div>
+      {[
+        {n:"Авторизоваться",d:"клиент входит в подтверждённый профиль"},
+        {n:"Дать согласие",d:"передача данных в сервис банка"},
+        {n:"Вернуться в кошелёк",d:"переход обратно в сценарий оплаты"}
+      ].map((it,i)=>(<div key={i} style={{display:"flex",gap:10,padding:"10px 0",borderBottom:i<2?"1px solid var(--phone-line-1)":"none"}}><span className="num" style={{width:22,height:22,borderRadius:"50%",background:"var(--lime)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:800}}>{i+1}</span><span><div style={{fontSize:12,fontWeight:700}}>{it.n}</div><div style={{fontSize:10,color:"var(--phone-text-2)",marginTop:1}}>{it.d}</div></span></div>))}
+    </div>
+  )},
+  id_bio:{title:"Селфи и паспорт", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Селфи и паспорт" s="Проверка в банковском контуре"/>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:9,margin:"14px 0"}}>
+        {[{t:"Селфи",i:"users"},{t:"Паспорт",i:"id"}].map((x,i)=><div key={i} style={{height:118,borderRadius:14,background:"var(--phone-surf)",border:"1px dashed var(--line-3)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:8}}><Ico d={ICONS[x.i]} size={28}/><div style={{fontSize:12,fontWeight:700}}>{x.t}</div></div>)}
+      </div>
+      <div style={{fontSize:11,color:"var(--phone-text-2)",lineHeight:1.45,marginBottom:14}}>Клиент делает селфи и фотографирует страницу паспорта. Проверка нужна для снятия лимитов кошелька.</div>
+      {PBtn("Продолжить","dark")}
+    </div>
+  )},
+  id_address:{title:"Адрес проживания", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Адрес проживания" s="Финальный шаг идентификации"/>
+      {[{l:"Город",v:"Москва"},{l:"Улица",v:"Ленинградский проспект"},{l:"Дом",v:"37"},{l:"Квартира",v:"120"}].map((f,i)=>(<div key={i} style={{padding:"8px 0",borderBottom:"1px solid var(--phone-line-1)"}}><div style={{fontSize:9,color:"var(--phone-text-2)",textTransform:"uppercase",letterSpacing:".06em"}}>{f.l}</div><div className="num" style={{fontSize:13,fontWeight:600,marginTop:1}}>{f.v}</div></div>))}
+      <div style={{fontSize:9,color:"var(--phone-text-3)",margin:"10px 0 12px"}}>Данные используются для завершения идентификации в сервисе банка</div>
+      {PBtn("Завершить проверку","dark")}
+    </div>
+  )},
+  id_done:{title:"Лимиты сняты", render:()=> (
+    <div style={{padding:16,textAlign:"center"}}>
+      <TickCircle/>
+      <div style={{fontSize:16,fontWeight:700}}>Идентификация пройдена</div>
+      <div style={{fontSize:11,color:"var(--phone-text-2)",margin:"6px 0 13px",lineHeight:1.4}}>Лимиты сняты. Теперь можно пополнить кошелёк и оплатить билет.</div>
+      <div style={{textAlign:"left",background:"var(--phone-surf)",borderRadius:13,padding:"4px 12px",marginBottom:13}}>
+        <PRow l="Статус" v="Идентифицирован"/>
+        <PRow l="Доступно к оплате" v="24 990 ₽" last={true} strong={true}/>
+      </div>
+      {PBtn("Пополнить кошелёк","dark")}
+    </div>
+  )},
+  flight_catalog:{title:"Покупка в полёте", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Бортовое меню" s="Оплата Аэрофлот Кошельком"/>
+      {[{n:"Кофе и сэндвич",v:"890 ₽"},{n:"Плед",v:"1 290 ₽"},{n:"Wi‑Fi пакет",v:"590 ₽"}].map((x,i)=>(<div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom:"1px solid var(--phone-line-1)"}}><div style={{width:34,height:34,borderRadius:10,background:"var(--phone-surf)",display:"flex",alignItems:"center",justifyContent:"center"}}><Ico d={ICONS.food} size={18}/></div><div style={{flex:1}}><div style={{fontSize:12,fontWeight:700}}>{x.n}</div><div style={{fontSize:10,color:"var(--phone-text-2)"}}>рейс SU 1124</div></div><div className="num" style={{fontSize:13,fontWeight:800}}>{x.v}</div></div>))}
+      <div style={{marginTop:13}}>{PBtn("Сгенерировать QR","dark")}</div>
+    </div>
+  )},
+  flight_qr:{title:"Offline QR", render:()=> (
+    <div style={{padding:16,textAlign:"center"}}>
+      <PTitle t="QR для оплаты" s="Работает при ограниченном интернете"/>
+      <div style={{width:148,height:148,background:"#fff",border:"8px solid var(--phone-surf)",borderRadius:18,margin:"14px auto 12px",display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:4,padding:10}}>
+        {Array.from({length:25}).map((_,i)=><div key={i} style={{background:[0,1,2,5,10,12,14,16,18,20,21,22,24].includes(i)?"var(--ink-1)":"transparent",borderRadius:2}}/>)}
+      </div>
+      <div style={{textAlign:"left",background:"var(--phone-surf)",borderRadius:12,padding:"4px 12px",marginBottom:12}}>
+        <PRow l="Сумма" v="890 ₽"/>
+        <PRow l="Токен" v="одноразовый"/>
+        <PRow l="Срок" v="3 минуты" last={true}/>
+      </div>
+      {PBtn("Подтвердить в кошельке","dark")}
+    </div>
+  )},
+  flight_sync:{title:"Синхронизация", render:()=> (
+    <div style={{padding:16,textAlign:"center"}}>
+      <TickCircle/>
+      <div style={{fontSize:16,fontWeight:700}}>Оплата зарезервирована</div>
+      <div style={{fontSize:11,color:"var(--phone-text-2)",margin:"6px 0 12px",lineHeight:1.4}}>После появления связи операция синхронизируется с банком, средства спишутся с кошелька.</div>
+      <div style={{textAlign:"left",borderTop:"1px solid var(--phone-line-1)",paddingTop:6}}>
+        <PRow l="Рейс" v="SU 1124"/>
+        <PRow l="Покупка" v="Кофе и сэндвич"/>
+        <PRow l="Статус" v="ожидает связи" last={true} strong={true}/>
+      </div>
+    </div>
+  )},
+  airport_offer:{title:"Аэропорт", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Покупки в аэропорту" s="Повышенные мили за оплату кошельком"/>
+      <div style={{margin:"12px 0"}}><Bonus txt="x3 мили в кафе и магазинах аэропорта"/></div>
+      {["Кафе","Duty Free","Такси","Бизнес-зал"].map((n,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom:i<3?"1px solid var(--phone-line-1)":"none"}}><div style={{width:30,height:30,borderRadius:9,background:"var(--phone-surf)",display:"flex",alignItems:"center",justifyContent:"center"}}><Ico d={ICONS.airport} size={17}/></div><span style={{flex:1,fontSize:12,fontWeight:700}}>{n}</span><span style={{fontSize:10,color:"var(--phone-text-2)"}}>повышенные мили</span></div>)}
+    </div>
+  )},
+  airport_paid:{title:"Оплата в аэропорту", render:()=> (
+    <div style={{padding:16,textAlign:"center"}}>
+      <TickCircle/>
+      <div style={{fontSize:16,fontWeight:700}}>Покупка оплачена</div>
+      <div style={{fontSize:11,color:"var(--phone-text-2)",margin:"6px 0 12px"}}>Кафе · Шереметьево</div>
+      <div style={{textAlign:"left",borderTop:"1px solid var(--phone-line-1)",paddingTop:6}}>
+        <PRow l="Сумма" v="1 240 ₽"/>
+        <PRow l="Начислено" v="+186 миль"/>
+        <PRow l="Остаток" v="11 160 ₽" last={true} strong={true}/>
+      </div>
+    </div>
+  )},
+  refund_ticket:{title:"Возврат билета", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Рейс отменён" s="Доступен мгновенный возврат"/>
+      <div style={{margin:"12px 0",padding:13,background:"var(--phone-surf)",borderRadius:13}}>
+        <div style={{fontSize:12,fontWeight:800}}>Москва — Сочи</div><div style={{fontSize:10,color:"var(--phone-text-2)",marginTop:3}}>SU 1124 · решение о возврате принято</div>
+      </div>
+      <PRow l="Сумма возврата" v="24 990 ₽"/>
+      <PRow l="Куда" v="Аэрофлот Кошелёк" last={true}/>
+      <div style={{marginTop:14}}>{PBtn("Вернуть на кошелёк","dark")}</div>
+    </div>
+  )},
+  refund_instant:{title:"Мгновенный возврат", render:()=> (
+    <div style={{padding:16,textAlign:"center"}}>
+      <TickCircle/>
+      <div style={{fontSize:16,fontWeight:700}}>Деньги зачислены</div>
+      <div style={{fontSize:11,color:"var(--phone-text-2)",margin:"6px 0 12px",lineHeight:1.4}}>Возврат поступил на Аэрофлот Кошелёк сразу после подтверждения Аэрофлота.</div>
+      <div style={{textAlign:"left",background:"var(--lime)",borderRadius:13,padding:"12px",color:"var(--ink-1)"}}><div style={{fontSize:10,fontWeight:700,opacity:.7}}>Зачислено</div><div className="num" style={{fontSize:26,fontWeight:800}}>+24 990 ₽</div></div>
+    </div>
+  )},
+  refund_partner:{title:"Процесс возврата", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Возврат по рейсу" s="Для партнёра — по рейсу и кошельку"/>
+      {[{l:"Рейс",v:"SU 1124"},{l:"Заказ",v:"AFL-4582"},{l:"Кошелёк",v:"····4567"},{l:"Статус",v:"зачислено"}].map((r,i)=><PRow key={i} {...r} last={i===3} strong={i===3}/>) }
+      <div style={{fontSize:10,color:"var(--phone-text-2)",lineHeight:1.4,marginTop:12}}>Аэрофлот подтверждает возврат, банк зачисляет средства на конкретный кошелёк клиента.</div>
+    </div>
+  )},
+  delay_notice:{title:"Задержка рейса", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Рейс задержан" s="Поддержка пассажира через кошелёк"/>
+      <div style={{margin:"12px 0",padding:13,borderRadius:13,background:"var(--phone-surf)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:9}}><Ico d={ICONS.bell} size={18}/><b style={{fontSize:12}}>Начислены средства на питание</b></div>
+        <div style={{fontSize:10,color:"var(--phone-text-2)",marginTop:6,lineHeight:1.35}}>В связи с переносом рейса SU 1124 на кошелёк зачислена сумма для поддержки пассажира.</div>
+      </div>
+      <PRow l="Назначение" v="питание"/>
+      <PRow l="Сумма" v="1 500 ₽" last={true} strong={true}/>
+      <div style={{marginTop:14}}>{PBtn("Открыть кошелёк","dark")}</div>
+    </div>
+  )},
+  delay_credit:{title:"Компенсация", render:()=> (
+    <div style={{padding:16,textAlign:"center"}}>
+      <TickCircle/>
+      <div style={{fontSize:16,fontWeight:700}}>Компенсация зачислена</div>
+      <div style={{fontSize:11,color:"var(--phone-text-2)",margin:"6px 0 12px",lineHeight:1.4}}>Средства доступны на кошельке. История и уведомление сохранены в личном кабинете.</div>
+      <div style={{textAlign:"left",borderTop:"1px solid var(--phone-line-1)",paddingTop:6}}>
+        <PRow l="Рейс" v="SU 1124"/>
+        <PRow l="Назначение" v="питание"/>
+        <PRow l="Зачислено" v="+1 500 ₽" last={true} strong={true}/>
+      </div>
+    </div>
+  )},
+  wallet_notifications:{title:"Уведомления", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Центр уведомлений" s="Кошелёк как помощник пассажира"/>
+      {[
+        {n:"Перенос рейса SU 1124",d:"обновлено расписание",i:"bell"},
+        {n:"Начислены средства",d:"1 500 ₽ на питание",i:"food"},
+        {n:"Возврат билета",d:"24 990 ₽ зачислены",i:"refund"}
+      ].map((x,i)=><div key={i} style={{display:"flex",gap:10,padding:"11px 0",borderBottom:i<2?"1px solid var(--phone-line-1)":"none"}}><div style={{width:32,height:32,borderRadius:10,background:i===1?"var(--lime)":"var(--phone-surf)",display:"flex",alignItems:"center",justifyContent:"center"}}><Ico d={ICONS[x.i]} size={17}/></div><div style={{flex:1}}><div style={{fontSize:12,fontWeight:700}}>{x.n}</div><div style={{fontSize:10,color:"var(--phone-text-2)"}}>{x.d}</div></div></div>)}
+    </div>
+  )},
+  wallet_refunds:{title:"Возвраты", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Возвраты и компенсации" s="Все начисления по рейсам"/>
+      {[{n:"Возврат билета",d:"SU 1124 · отмена рейса",v:"+24 990 ₽",i:"refund"},{n:"Питание",d:"SU 1124 · задержка",v:"+1 500 ₽",i:"food"},{n:"Вода",d:"SU 1124 · задержка",v:"+350 ₽",i:"savings"}].map((x,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"11px 0",borderBottom:i<2?"1px solid var(--phone-line-1)":"none"}}><div style={{width:32,height:32,borderRadius:10,background:"var(--phone-surf)",display:"flex",alignItems:"center",justifyContent:"center"}}><Ico d={ICONS[x.i]} size={17}/></div><div style={{flex:1}}><div style={{fontSize:12,fontWeight:700}}>{x.n}</div><div style={{fontSize:10,color:"var(--phone-text-2)"}}>{x.d}</div></div><div className="num" style={{fontSize:12,fontWeight:800}}>{x.v}</div></div>)}
+    </div>
+  )},
+  wallet_security:{title:"Безопасность", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Кошелёк защищён" s="Аэрофлот × Альфа-Банк"/>
+      <div style={{margin:"12px 0",padding:13,borderRadius:14,background:"var(--lime)",color:"var(--ink-1)"}}><div style={{display:"flex",alignItems:"center",gap:9,marginBottom:6}}><Ico d={ICONS.shield} size={20}/><b style={{fontSize:13}}>Часть инфраструктуры Аэрофлота</b></div><div style={{fontSize:11,lineHeight:1.4,fontWeight:600}}>Кошелёк встроен в приложение, программу лояльности и обслуживается в банковском контуре Альфа-Банка.</div></div>
+      {["Подтверждение операций", "Скрытые реквизиты и CVC", "Заморозка кошелька", "Уведомления по операциям"].map((n,i)=><div key={i} style={{display:"flex",gap:10,alignItems:"center",padding:"8px 0",borderBottom:i<3?"1px solid var(--phone-line-1)":"none"}}><span style={{width:18,height:18,borderRadius:"50%",background:"var(--phone-surf)",display:"flex",alignItems:"center",justifyContent:"center"}}>✓</span><span style={{fontSize:12,fontWeight:600}}>{n}</span></div>)}
+    </div>
+  )},
+  security_main:{title:"Безопасность", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Безопасность кошелька" s="Не просто платёжный инструмент"/>
+      <div style={{height:112,borderRadius:18,background:"var(--ink-1)",color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column",gap:8,margin:"14px 0"}}><Ico d={ICONS.shield} size={34}/><div style={{fontSize:13,fontWeight:800}}>Аэрофлот Кошелёк</div></div>
+      <div style={{fontSize:11.5,color:"var(--phone-text-2)",lineHeight:1.45}}>Кошелёк воспринимается как продукт Аэрофлота: он встроен в профиль, бонусы, поездку, возвраты и уведомления.</div>
+    </div>
+  )},
+  security_ops:{title:"Защита операций", render:()=> (
+    <div style={{padding:16}}>
+      <PTitle t="Контроль операций" s="Подтверждения и токены"/>
+      {[{n:"Оплата",d:"код / биометрия"},{n:"QR в полёте",d:"одноразовый токен"},{n:"Реквизиты",d:"скрыты до подтверждения"},{n:"Карта",d:"можно заморозить"}].map((x,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"11px 0",borderBottom:i<3?"1px solid var(--phone-line-1)":"none"}}><div style={{width:30,height:30,borderRadius:9,background:"var(--phone-surf)",display:"flex",alignItems:"center",justifyContent:"center"}}><Ico d={ICONS.shield} size={16}/></div><div style={{flex:1}}><div style={{fontSize:12,fontWeight:700}}>{x.n}</div><div style={{fontSize:10,color:"var(--phone-text-2)"}}>{x.d}</div></div></div>)}
+    </div>
+  )},
   profile_access:{title:"Профиль · Аэрофлот Бонус", render:()=>(
     <div style={{padding:16}}>
       <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:14}}>
@@ -976,7 +1204,7 @@ function Hero({activeJourney, setActiveJourney}){
               Live прототип
             </div>
             <span className="dot"/>
-            <span>6 сценариев</span>
+            <span>{journeys.length} сценариев</span>
           </div>
         </motion.div>
       </div>
