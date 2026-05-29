@@ -63,6 +63,7 @@ button:focus-visible{outline:2px solid var(--ink-1);outline-offset:3px;border-ra
   .mobile-step-nav button:not(:disabled):hover{background:var(--ink-1);color:#fff}
   .mobile-step-nav button:disabled{opacity:.3;cursor:default}
   .mobile-step-nav .counter{font-size:14px;color:var(--ink-2);font-weight:600;letter-spacing:0.02em;min-width:60px;text-align:center}
+  .variant-grid{grid-template-columns:1fr !important}
 }
 @media (max-width:1100px){.hero-grid{grid-template-columns:1fr !important;gap:28px !important;align-items:start !important}}
 @media (max-width:960px){
@@ -162,6 +163,15 @@ const journeys=[
   {title:"Заказ пластика",zone:"Банк",screen:"delivery",desc:"Заказ пластиковой карты курьером или в отделении. После активации — автоматическая привязка к способу оплаты Аэрофлот Кошелёк.",metricPartner:"Пластик с предустановленной привязкой к Аэрофлот Кошелёк",metricBank:"Долгосрочная активация клиента"},
   {title:"Привязка и оплата",zone:"Аэрофлот Бонус",screen:"pay_bonus",desc:"После активации кошелька — автоматическая передача реквизитов и привязка к способу оплаты Аэрофлот Кошелёк. Оплата с начислением миль.",metricPartner:"Регулярные покупки с начислением миль",metricBank:"Активный клиент с кошельком и транзакционной историей"},
 ]},
+{id:"future_pay",group:"capability",label:"Аэрофлот Pay Future",desc:"Видение будущего: кошелёк как финансовое ядро и помощник путешествия",steps:[
+  {title:"Кошелёк-помощник в поездке",zone:"Аэрофлот Pay · Vision",screen:"future_position",desc:"Видение будущего Аэрофлот Pay: кошелёк не просто хранит деньги, а понимает контекст поездки — где пассажир, что происходит с рейсом и какая помощь нужна прямо сейчас.",metricPartner:"Аэрофлот снижает тревожность пассажира и превращает сервисные ситуации в управляемый цифровой опыт",metricBank:"Альфа-Банк становится финансовым ядром тревел-сценария, а не отдельным банковским приложением"},
+  {title:"Rebooking Wallet",zone:"Рейс задержан / отменён",screen:"future_rebooking",desc:"При отмене рейса или длительной задержке кошелёк автоматически открывает временный лимит на еду, такси или отель до момента, пока авиакомпания оказывает услугу. Клиенту не нужно сначала тратить свои деньги и ждать возврат.",metricPartner:"Снижение стресса в критичный момент: пассажир сразу видит доступные средства и понятные категории трат",metricBank:"Контекстный лимит формирует доверие к кошельку как к инструменту управления риском поездки"},
+  {title:"Travel-кредит при багаже",zone:"Багаж не прилетел",screen:"future_baggage",desc:"Если багаж задержан, кошелёк моментально начисляет travel-кредит или временный лимит на предметы первой необходимости — без бумажной волокиты и ожидания ручного решения.",metricPartner:"Пассажир получает помощь сразу в точке проблемы, а не после обращения в поддержку",metricBank:"Банк предоставляет партнёру финансовый сервис мгновенной поддержки в нестандартных ситуациях"},
+  {title:"Мильный эквайринг",zone:"Мили ↔ деньги",screen:"future_miles_cash",desc:"Клиент может докупить недостающую часть билета деньгами из кошелька по спецкурсу или конвертировать часть миль в рубли на кошельке, чтобы потратить их в аэропорту.",metricPartner:"Мили становятся более ликвидными и чаще возвращают клиента в экосистему Аэрофлота",metricBank:"Кошелёк становится единым расчётным слоем между лояльностью, деньгами и покупками"},
+  {title:"Smart Fast-Track и Lounge ID",zone:"Аэропорт",screen:"future_vip",desc:"Для клиентов со статусом или оборотом кошелёк предлагает Fast-Track за 1 милю и динамический QR-код Wallet ID для прохода в лаунж, привязанный к текущему рейсу.",metricPartner:"Премиальный опыт активируется в нужный момент — прямо перед поездкой и без отдельной карты",metricBank:"Оборот и статус кошелька превращаются в понятные тревел-привилегии"},
+  {title:"Копилка на отпуск и Upgrade-фонд",zone:"До поездки",screen:"future_savings_upgrade",desc:"Клиент копит на отпуск внутри кошелька: на остаток начисляются проценты и мили. Отдельно можно заморозить сумму как заявку на апгрейд до бизнес-класса — если место появится, списание пройдёт автоматически.",metricPartner:"Аэрофлот получает ранний спрос на будущие поездки и апгрейды",metricBank:"Остатки на кошельке получают понятную цель и меньше воспринимаются как деньги на вывод"},
+  {title:"Сервисы в точке прибытия",zone:"После посадки",screen:"future_arrival",desc:"После посадки кошелёк предлагает трансфер с фиксированной ценой и для международных рейсов — валютный буфер с виртуальным мультивалютным счётом для первых расходов в стране прибытия.",metricPartner:"Аэрофлот сопровождает пассажира после перелёта и расширяет ценность путешествия",metricBank:"Кошелёк становится платёжным инструментом всей поездки — от билета до первого такси"},
+]},
 {id:"online_identity",group:"capability",label:"Онлайн-идентификация",desc:"Технология Альфа-Банка для снятия лимитов внутри партнёрского сценария",steps:[
   {title:"Зачем нужна идентификация",zone:"Аэрофлот Бонус → Банк",screen:"id_value",desc:"Аэрофлоту важно закрывать средний чек выше 15 000 ₽. Альфа-Банк предоставляет сервис онлайн-идентификации, который позволяет клиенту повысить статус кошелька без офиса и без выхода из приложения.",metricPartner:"Клиент остаётся в сценарии покупки и получает возможность оплатить билет выше базового лимита",metricBank:"Банк предоставляет партнёру технологический сервис, который конвертирует цифровой кошелёк в полноценный платёжный продукт"},
   {title:"Вход через Госуслуги",zone:"Банк · Госуслуги",screen:"id_gosuslugi",desc:"Клиент авторизуется через Госуслуги и даёт согласие на передачу данных в банк для подтверждения личности.",metricPartner:"Процесс выглядит привычно и доверенно для клиента",metricBank:"Сервис банка получает подтверждённые данные для дальнейшей проверки"},
@@ -169,24 +179,34 @@ const journeys=[
   {title:"Адрес проживания",zone:"Банк",screen:"id_address",desc:"Клиент указывает адрес проживания. После проверки статус кошелька обновляется, лимиты снимаются.",metricPartner:"Клиент сразу возвращается к оплате билета",metricBank:"После успешной проверки клиент становится полноценным идентифицированным клиентом"},
   {title:"Лимиты сняты",zone:"Банк → Аэрофлот Бонус",screen:"id_done",desc:"Клиент видит подтверждение, что лимиты сняты, и может пополнить кошелёк на сумму заказа.",metricPartner:"Дорогой заказ не теряется из-за лимита базового кошелька",metricBank:"Повышение статуса клиента открывает больший транзакционный потенциал"},
 ]},
-{id:"payment",group:"capability",label:"Оплата кошельком",desc:"Оплата онлайн, в полёте и в аэропорту",steps:[
+{id:"payment",group:"capability",label:"Оплата кошельком",desc:"Оплата онлайн, в полёте и в аэропорту",variantLabels:{online:"Онлайн-покупка билета",flight:"Оплата в полёте",airport:"Оплата в аэропорту"},variantDescs:{online:"Классический сценарий покупки билета в приложении Аэрофлота",flight:"Покупка на борту через QR даже при ограниченном интернете",airport:"Покупки в аэропорту с дополнительной выгодой в милях"},variants:{
+  online:[
     {title:"Онлайн-покупка билета",zone:"Аэрофлот Бонус · online",screen:"shop_product",desc:"Клиент выбирает рейс в приложении Аэрофлота. Подсвечивается выгода оплаты через Аэрофлот Кошелёк: +1000 миль.",metricPartner:"Выгода Аэрофлот Кошелька видна уже в карточке рейса",metricBank:"Узнаваемость Аэрофлот Кошелька в каталоге партнёра"},
     {title:"Добавил в корзину",zone:"Аэрофлот Бонус · online",screen:"cart",desc:"Билет в корзине. Баннер «+1000 миль при оплате Аэрофлот Кошельком» рядом с итоговой суммой.",metricPartner:"Бонусный баннер в корзине — стимул завершить заказ",metricBank:"Напоминание об Аэрофлот Кошельке в корзине"},
     {title:"Перешёл в оформление",zone:"Аэрофлот Бонус · online",screen:"checkout_methods",desc:"Оформление заказа, выбор способа оплаты среди СБП, SberPay, Яндекс Пэй и Аэрофлот Кошелёк.",metricPartner:"Аэрофлот Кошелёк — в списке способов оплаты",metricBank:"Присутствие среди привычных способов оплаты"},
     {title:"Оплатил билет",zone:"Аэрофлот Бонус · online",screen:"paid",desc:"Оплата прошла в один тап. +1000 миль начислено на счёт лояльности.",metricPartner:"Оплата в один тап, бонусы начислены",metricBank:"Завершённая транзакция по Аэрофлот Кошельку"},
+  ],
+  flight:[
     {title:"Покупка во время полёта",zone:"Борт · offline QR",screen:"flight_catalog",desc:"В полёте клиент выбирает товар или питание. При ограниченном интернете бортовая система генерирует QR для списания с Аэрофлот Кошелька.",metricPartner:"Аэрофлот получает дополнительный платёжный сценарий там, где обычный онлайн-эквайринг недоступен",metricBank:"Кошелёк становится инструментом платежей за пределами классического онлайн-чек-аута"},
     {title:"QR работает без интернета",zone:"Борт · offline QR",screen:"flight_qr",desc:"QR содержит параметры покупки: рейс, сумма, merchant ID, срок действия и одноразовый токен. Клиент подтверждает оплату в приложении, а операция резервируется до синхронизации.",metricPartner:"Покупка возможна даже при ограниченной связи на борту",metricBank:"После появления связи операция синхронизируется и списывается с кошелька"},
     {title:"Списание и синхронизация",zone:"Банк · Аэрофлот",screen:"flight_sync",desc:"После восстановления связи бортовая система и банк сверяют токен, сумму и рейс. Средства списываются с кошелька, клиент получает чек и мили.",metricPartner:"Контроль списания привязан к конкретному рейсу и покупке",metricBank:"Снижение риска повторного списания за счёт одноразового токена и сверки операции"},
+  ],
+  airport:[
     {title:"Покупки в аэропорту",zone:"Аэропорт · retail",screen:"airport_offer",desc:"В магазинах, кафе и сервисах аэропорта клиент видит дополнительную выгоду при оплате Аэрофлот Кошельком — например, повышенный кэшбэк в милях.",metricPartner:"Кошелёк расширяет присутствие Аэрофлота в аэропортовой инфраструктуре",metricBank:"Рост частоты транзакций по кошельку вне покупки билета"},
     {title:"Оплата в аэропорту",zone:"Аэропорт · retail",screen:"airport_paid",desc:"Клиент оплачивает покупку кошельком и получает повышенные мили. Остаток на кошельке сохраняется для будущих поездок и покупок.",metricPartner:"Клиент возвращает остатки в будущие покупки внутри экосистемы Аэрофлота",metricBank:"Транзакционный сценарий продлевается за пределы билета"},
-  ]},
-{id:"refunds",group:"capability",label:"Возвраты",desc:"Мгновенные возвраты билетов и компенсации при задержках",steps:[
-  {title:"Возврат билета",zone:"Аэрофлот Бонус",screen:"refund_ticket",desc:"При отмене рейса и официальном решении о возврате клиенту предлагается мгновенный возврат средств на Аэрофлот Кошелёк.",metricPartner:"У клиента появляется быстрый и понятный способ получить деньги без ожидания стандартного возврата на карту",metricBank:"Средства возвращаются на кошелёк и могут быть использованы для будущих покупок"},
-  {title:"Мгновенное зачисление",zone:"Кошелёк",screen:"refund_instant",desc:"Деньги поступают на кошелёк сразу после подтверждения возврата со стороны Аэрофлота. Клиент видит зачисление в истории операций.",metricPartner:"Снижается негатив от отмены рейса: клиент быстро видит деньги и может купить новый билет",metricBank:"Кошелёк становится основным счётом для сервисных выплат партнёра"},
-  {title:"Процесс для партнёра",zone:"Аэрофлот → Банк",screen:"refund_partner",desc:"Для Аэрофлота процесс строится по конкретному рейсу и номеру кошелька: партнёр подтверждает возврат, банк зачисляет средства на нужный кошелёк.",metricPartner:"Возврат можно делать точечно: по рейсу, заказу и кошельку клиента",metricBank:"Интеграция делает кошелёк сервисным инструментом партнёрских выплат"},
-  {title:"Задержка рейса",zone:"Аэрофлот Бонус",screen:"delay_notice",desc:"При задержке рейса клиент получает уведомление: на кошелёк начислены средства для воды, питания или другой поддержки в рамках правил обслуживания пассажиров.",metricPartner:"Аэрофлот может быстро оказать поддержку клиенту без ручной выдачи ваучеров",metricBank:"Кошелёк используется как быстрый канал целевых начислений"},
-  {title:"Компенсация в кошельке",zone:"Кошелёк",screen:"delay_credit",desc:"Клиент видит зачисление, назначение выплаты и где её можно использовать. Уведомление сохраняется в истории кошелька.",metricPartner:"Клиент понимает, что происходит, и получает помощь в одном привычном интерфейсе",metricBank:"Рост доверия к кошельку как к помощнику в нестандартных ситуациях"},
-]},
+  ],
+}},
+{id:"refunds",group:"capability",label:"Возвраты",desc:"Мгновенные возвраты билетов и компенсации при задержках",variantLabels:{ticket:"Возврат билета",delay:"Компенсация при задержке"},variantDescs:{ticket:"Мгновенный возврат средств на кошелёк при отмене рейса",delay:"Целевые начисления на воду, питание и поддержку при задержке"},variants:{
+  ticket:[
+    {title:"Возврат билета",zone:"Аэрофлот Бонус",screen:"refund_ticket",desc:"При отмене рейса и официальном решении о возврате клиенту предлагается мгновенный возврат средств на Аэрофлот Кошелёк.",metricPartner:"У клиента появляется быстрый и понятный способ получить деньги без ожидания стандартного возврата на карту",metricBank:"Средства возвращаются на кошелёк и могут быть использованы для будущих покупок"},
+    {title:"Мгновенное зачисление",zone:"Кошелёк",screen:"refund_instant",desc:"Деньги поступают на кошелёк сразу после подтверждения возврата со стороны Аэрофлота. Клиент видит зачисление в истории операций.",metricPartner:"Снижается негатив от отмены рейса: клиент быстро видит деньги и может купить новый билет",metricBank:"Кошелёк становится основным счётом для сервисных выплат партнёра"},
+    {title:"Процесс для партнёра",zone:"Аэрофлот → Банк",screen:"refund_partner",desc:"Для Аэрофлота процесс строится по конкретному рейсу и номеру кошелька: партнёр подтверждает возврат, банк зачисляет средства на нужный кошелёк.",metricPartner:"Возврат можно делать точечно: по рейсу, заказу и кошельку клиента",metricBank:"Интеграция делает кошелёк сервисным инструментом партнёрских выплат"},
+  ],
+  delay:[
+    {title:"Задержка рейса",zone:"Аэрофлот Бонус",screen:"delay_notice",desc:"При задержке рейса клиент получает уведомление: на кошелёк начислены средства для воды, питания или другой поддержки в рамках правил обслуживания пассажиров.",metricPartner:"Аэрофлот может быстро оказать поддержку клиенту без ручной выдачи ваучеров",metricBank:"Кошелёк используется как быстрый канал целевых начислений"},
+    {title:"Компенсация в кошельке",zone:"Кошелёк",screen:"delay_credit",desc:"Клиент видит зачисление, назначение выплаты и где её можно использовать. Уведомление сохраняется в истории кошелька.",metricPartner:"Клиент понимает, что происходит, и получает помощь в одном привычном интерфейсе",metricBank:"Рост доверия к кошельку как к помощнику в нестандартных ситуациях"},
+  ],
+}},
 {id:"manage",group:"capability",label:"Управление",desc:"Кошелёк как личный кабинет и помощник пассажира",steps:[
   {title:"Доступ в профиле",zone:"Аэрофлот Бонус",screen:"profile_access",desc:"Аэрофлот Кошелёк доступен в профиле клиента в приложении Аэрофлота — рядом с бонусами и картой лояльности.",metricPartner:"Кошелёк всегда под рукой в приложении Аэрофлота",metricBank:"Регулярные заходы в Аэрофлот Кошелёк"},
   {title:"Главная кошелька",zone:"Кошелёк",screen:"wallet_home",desc:"Баланс, мили, история операций и быстрые действия с картой на главном экране кошелька.",metricPartner:"Прозрачный баланс и история операций",metricBank:"Вовлечённость в кошелёк"},
@@ -220,6 +240,7 @@ const benefitsPartner=[
   {icon:"trend",title:"Экономия на эквайринге",desc:"Оплата через Аэрофлот Кошелёк выгоднее для Аэрофлота, чем сторонние способы на чек-ауте",accent:"эквайринг"},
   {icon:"wallet",title:"Остатки для будущих покупок",desc:"Клиенты используют остатки на кошельке не для вывода, а для следующих покупок билетов, услуг и товаров в экосистеме Аэрофлота"},
   {icon:"id",title:"Онлайн-идентификация",desc:"Технология Альфа-Банка позволяет доидентифицировать клиента внутри сценария Аэрофлота и снять лимит для оплаты среднего чека"},
+  {icon:"shield",title:"Снижение тревожности пассажира",desc:"Кошелёк закрывает риск-сценарии поездки: задержка, отмена, багаж, возвраты и компенсации — в одном окне Аэрофлота"},
   {icon:"users",title:"Новые клиенты",desc:"Готовая аудитория Альфа-Банка подключается прямо в канале Аэрофлота"},
   {icon:"chart",title:"Частота покупок и средний чек",desc:"Совместная лояльность мотивирует возвращаться и покупать больше"},
   {icon:"sparkle",title:"Совместные предложения",desc:"Бонусы клиенту финансируются за счёт экономии на эквайринге — не из маржи партнёра"},
@@ -229,6 +250,15 @@ const benefitsBank=[
   {icon:"users",title:"Новые клиенты",desc:"Подключение клиентов к Аэрофлот Кошелька в покупательском пути партнёра"},
   {icon:"savings",title:"Доход от остатков на счетах",desc:"Пополнение кошельков и рост балансов на счетах Альфа-Банка"},
   {icon:"data",title:"Данные и кросс-продажи",desc:"Связка «клиент банка — покупатель партнёра» для новых продуктов"},
+];
+
+const futureVisionCards=[
+  {icon:"shield",title:"Финансовый страховой щит",desc:"Временный лимит на еду, такси, отель или предметы первой необходимости при задержке, отмене или проблемах с багажом."},
+  {icon:"refresh",title:"Мили как деньги",desc:"Докупить билет деньгами из кошелька, конвертировать часть миль в рубли или потратить их в аэропорту."},
+  {icon:"airport",title:"Аэропорт без лишних шагов",desc:"Fast-Track, лаунж, покупки в терминале и повышенные мили активируются в момент, когда пассажиру это нужно."},
+  {icon:"savings",title:"Копилка на отпуск",desc:"Остатки в кошельке получают тревел-цель: проценты, мили и возможность заранее забронировать upgrade-фонд."},
+  {icon:"plane",title:"Контекст рейса",desc:"Кошелёк знает рейс, терминал, статус задержки и предлагает конкретное действие вместо общей банковской витрины."},
+  {icon:"wallet",title:"Единое окно поездки",desc:"Билет, возврат, компенсация, трансфер, валюта и покупки собираются в одном финансовом сценарии Аэрофлота."},
 ];
 
 /* ===== ICONS ===== */
@@ -318,6 +348,126 @@ const PTitle = ({t,s})=>(
 
 /* ===== SCREENS ===== */
 const SCREENS = {
+  future_position:{title:"Аэрофлот Pay Future", render:()=>(
+    <div style={{padding:16}}>
+      <div style={{display:"flex",alignItems:"center",gap:9,marginBottom:12}}>
+        <GAMark size={34} radius={10}/>
+        <div>
+          <div style={{fontSize:16,fontWeight:800,color:"var(--phone-text-1)",letterSpacing:"-.02em"}}>Аэрофлот Pay</div>
+          <div style={{fontSize:10,color:"var(--phone-text-2)"}}>умный помощник в поездке</div>
+        </div>
+      </div>
+      <div style={{background:"var(--lime)",borderRadius:14,padding:"14px 13px",marginBottom:11}}>
+        <div style={{fontSize:10,fontWeight:800,color:"var(--ink-1)",textTransform:"uppercase",letterSpacing:".08em",opacity:.7}}>Предсказуемость</div>
+        <div style={{fontSize:18,fontWeight:800,color:"var(--ink-1)",letterSpacing:"-.03em",lineHeight:1.15,marginTop:4}}>Кошелёк знает, что нужно пассажиру сейчас</div>
+      </div>
+      {[{l:"Где пассажир",v:"Терминал B · посадка через 40 мин"},{l:"Статус рейса",v:"SU 1134 · задержка 3 ч 10 мин"},{l:"Что предложить",v:"Еда · такси · rebooking-лимит"}].map((r,i)=>(<PRow key={i} l={r.l} v={r.v} last={i===2}/>))}
+      <div style={{marginTop:12}}>{PBtn("Открыть помощника поездки","dark")}</div>
+    </div>
+  )},
+  future_rebooking:{title:"Rebooking Wallet", render:()=>(
+    <div style={{padding:16}}>
+      <PTitle t="Рейс задержан" s="SU 1134 · задержка более 3 часов"/>
+      <div style={{margin:"12px 0",background:"var(--phone-surf)",borderRadius:14,padding:"13px"}}>
+        <div style={{fontSize:10,color:"var(--phone-text-2)",fontWeight:700,textTransform:"uppercase",letterSpacing:".06em"}}>Доступный лимит</div>
+        <div className="num" style={{fontSize:30,fontWeight:800,color:"var(--phone-text-1)",letterSpacing:"-.04em",marginTop:2}}>25 000 ₽</div>
+        <div style={{fontSize:10.5,color:"var(--phone-text-2)",marginTop:2}}>на еду, такси или отель до решения по рейсу</div>
+      </div>
+      {[{n:"Питание в аэропорту",i:"food"},{n:"Такси до отеля",i:"airport"},{n:"Отель на ночь",i:"wallet"}].map((a,i)=>(
+        <div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom:i<2?"1px solid var(--phone-line-1)":"none"}}>
+          <div style={{width:30,height:30,borderRadius:9,background:"var(--lime)",display:"flex",alignItems:"center",justifyContent:"center",color:"var(--ink-1)"}}><Ico d={ICONS[a.i]} size={16}/></div>
+          <div style={{flex:1,fontSize:12,fontWeight:650,color:"var(--phone-text-1)"}}>{a.n}</div>
+          <span style={{fontSize:10,color:"var(--phone-text-2)"}}>доступно</span>
+        </div>))}
+      <div style={{marginTop:12}}>{PBtn("Использовать лимит","dark")}</div>
+    </div>
+  )},
+  future_baggage:{title:"Travel-кредит", render:()=>(
+    <div style={{padding:16}}>
+      <PTitle t="Багаж задержан" s="Мы уже знаем статус по рейсу"/>
+      <div style={{margin:"12px 0",border:"1px solid var(--phone-line-1)",borderRadius:14,padding:"13px"}}>
+        <div style={{display:"flex",alignItems:"center",gap:10}}>
+          <div style={{width:38,height:38,borderRadius:12,background:"var(--lime)",display:"flex",alignItems:"center",justifyContent:"center"}}><Ico d={ICONS.shield} size={20}/></div>
+          <div>
+            <div style={{fontSize:13,fontWeight:800,color:"var(--phone-text-1)"}}>Начислен travel-кредит</div>
+            <div style={{fontSize:10,color:"var(--phone-text-2)"}}>на предметы первой необходимости</div>
+          </div>
+        </div>
+        <div className="num" style={{fontSize:28,fontWeight:800,color:"var(--phone-text-1)",letterSpacing:"-.03em",marginTop:12}}>15 000 ₽</div>
+      </div>
+      {["Одежда и гигиена","Аптека","Доставка в отель"].map((t,i)=>(
+        <div key={i} style={{display:"inline-flex",margin:"0 6px 7px 0",padding:"7px 9px",borderRadius:99,background:"var(--phone-surf)",fontSize:10.5,fontWeight:650,color:"var(--phone-text-1)"}}>{t}</div>
+      ))}
+      <div style={{fontSize:10,color:"var(--phone-text-3)",lineHeight:1.35,margin:"6px 0 12px"}}>Без бумажной анкеты: начисление связано с рейсом и статусом багажа.</div>
+      {PBtn("Оплатить покупку","dark")}
+    </div>
+  )},
+  future_miles_cash:{title:"Мильный эквайринг", render:()=>(
+    <div style={{padding:16}}>
+      <PTitle t="Мили + кошелёк" s="Оплатите билет гибко"/>
+      <div style={{marginTop:12,background:"var(--phone-surf)",borderRadius:14,padding:"13px"}}>
+        <PRow l="Стоимость билета" v="32 400 миль"/>
+        <PRow l="На счёте" v="24 900 миль"/>
+        <PRow l="Не хватает" v="7 500 миль" last={true} strong={true}/>
+      </div>
+      <div style={{margin:"11px 0",padding:"12px",borderRadius:13,border:"1.5px solid var(--ink-1)",background:"#fff"}}>
+        <div style={{fontSize:13,fontWeight:800,color:"var(--phone-text-1)"}}>Докупить из кошелька</div>
+        <div style={{fontSize:10.5,color:"var(--phone-text-2)",marginTop:3}}>Спецкурс для участников Аэрофлот Бонус</div>
+        <div className="num" style={{fontSize:22,fontWeight:800,letterSpacing:"-.02em",marginTop:7}}>3 750 ₽</div>
+      </div>
+      <div style={{display:"flex",gap:8}}><div style={{flex:1}}>{PBtn("Докупить","dark")}</div><div style={{flex:1}}>{PBtn("Мили в ₽","ghost")}</div></div>
+    </div>
+  )},
+  future_vip:{title:"Smart Fast-Track", render:()=>(
+    <div style={{padding:16}}>
+      <PTitle t="Привилегии по рейсу" s="Доступны перед вылетом"/>
+      <div style={{margin:"12px 0",display:"flex",gap:8}}>
+        <div style={{flex:1,background:"var(--lime)",borderRadius:14,padding:"12px"}}>
+          <div style={{fontSize:11,fontWeight:800,color:"var(--ink-1)"}}>Fast-Track</div>
+          <div className="num" style={{fontSize:24,fontWeight:900,color:"var(--ink-1)",letterSpacing:"-.03em",marginTop:6}}>1 миля</div>
+          <div style={{fontSize:9.5,color:"var(--ink-1)",opacity:.7}}>для Premium</div>
+        </div>
+        <div style={{flex:1,background:"var(--phone-surf)",borderRadius:14,padding:"12px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <div style={{width:62,height:62,border:"6px solid var(--ink-1)",borderRadius:8,position:"relative"}}>
+            <div style={{position:"absolute",inset:18,border:"5px solid var(--ink-1)",borderRadius:4}}/>
+          </div>
+        </div>
+      </div>
+      <PRow l="Wallet ID" v="привязан к SU 1134"/>
+      <PRow l="Лаунж" v="QR действует до посадки" last={true}/>
+      <div style={{marginTop:12}}>{PBtn("Активировать проход","dark")}</div>
+    </div>
+  )},
+  future_savings_upgrade:{title:"Копилка и Upgrade", render:()=>(
+    <div style={{padding:16}}>
+      <PTitle t="Копилка на отпуск" s="Деньги работают на будущую поездку"/>
+      <div style={{margin:"12px 0"}}><WalletCard balance="86 400 ₽" soft={true}/></div>
+      <PRow l="Начисление" v="проценты + мили"/>
+      <PRow l="Цель" v="Стамбул · сентябрь"/>
+      <PRow l="Накоплено" v="72%" last={true} strong={true}/>
+      <div style={{margin:"12px 0",padding:"11px 12px",background:"var(--phone-surf)",borderRadius:12}}>
+        <div style={{fontSize:12,fontWeight:800,color:"var(--phone-text-1)"}}>Upgrade-фонд</div>
+        <div style={{fontSize:10.5,color:"var(--phone-text-2)",marginTop:2}}>Заморозить 18 000 ₽ до −24 ч. Если место появится — апгрейд подтвердится автоматически.</div>
+      </div>
+      {PBtn("Заморозить на апгрейд","dark")}
+    </div>
+  )},
+  future_arrival:{title:"После посадки", render:()=>(
+    <div style={{padding:16}}>
+      <PTitle t="Добро пожаловать" s="Самолёт приземлился · AYT"/>
+      <div style={{marginTop:12,padding:"13px",borderRadius:14,background:"var(--phone-surf)"}}>
+        <div style={{fontSize:13,fontWeight:800,color:"var(--phone-text-1)"}}>Трансфер готов</div>
+        <div style={{fontSize:10.5,color:"var(--phone-text-2)",marginTop:3}}>Выход 4 · цена зафиксирована</div>
+        <div className="num" style={{fontSize:24,fontWeight:850,color:"var(--phone-text-1)",marginTop:8}}>2 900 ₽</div>
+      </div>
+      <div style={{margin:"11px 0",padding:"12px",border:"1px solid var(--phone-line-1)",borderRadius:13}}>
+        <div style={{fontSize:12,fontWeight:800,color:"var(--phone-text-1)"}}>Валютный буфер</div>
+        <div style={{fontSize:10.5,color:"var(--phone-text-2)",marginTop:3}}>Открыть виртуальный счёт для первых расходов в Турции</div>
+        <div className="num" style={{fontSize:17,fontWeight:800,marginTop:8}}>₺ 3 000</div>
+      </div>
+      <div style={{display:"flex",gap:8}}><div style={{flex:1}}>{PBtn("Списать","dark")}</div><div style={{flex:1}}>{PBtn("Открыть ₺","ghost")}</div></div>
+    </div>
+  )},
   ga_checkout_high:{title:"Чек-аут · Аэрофлот Бонус", render:()=>(
     <div style={{padding:"14px 16px",display:"flex",flexDirection:"column",gap:11}}>
       <div style={{display:"flex",alignItems:"center",gap:8}}>
@@ -1377,8 +1527,40 @@ function MobileStepNav({current, total, onPrev, onNext}){
 }
 
 /* ============================================================
-   PAY MODE TOGGLE — online / offline (capability journeys)
+   PAY MODE TOGGLE — grouped payment modes
    ============================================================ */
+function VariantToggle({journey, activeMode, setMode}){
+  if(!journey.variants) return null;
+  const keys = Object.keys(journey.variants);
+  const labels = journey.variantLabels || {};
+  const descs = journey.variantDescs || {};
+  return (
+    <div style={{marginBottom:34}}>
+      <div style={{display:"flex", justifyContent:"space-between", alignItems:"baseline", marginBottom:12, gap:16, flexWrap:"wrap"}}>
+        <div className="eyebrow" style={{margin:0}}>Сценарии внутри раздела</div>
+        <div style={{fontSize:12,color:"var(--ink-3)",fontWeight:500,letterSpacing:"-.005em"}}>Выберите сценарий внутри раздела</div>
+      </div>
+      <LayoutGroup id={journey.id+"-variants"}>
+        <div style={{display:"grid",gridTemplateColumns:`repeat(${keys.length}, minmax(0, 1fr))`,gap:10}} className="variant-grid">
+          {keys.map((key,idx)=>{
+            const active = key === activeMode;
+            return (
+              <button key={key} onClick={()=>setMode(key)}
+                style={{position:"relative",textAlign:"left",padding:"16px 18px",borderRadius:16,border:active?"1px solid var(--ink-1)":"1px solid var(--line-2)",background:active?"var(--ink-1)":"var(--surface-1)",color:active?"#fff":"var(--ink-1)",cursor:"pointer",overflow:"hidden",minHeight:92,transition:"border-color 220ms, background 220ms, color 220ms",boxShadow:active?"0 14px 34px -18px rgba(10,33,80,.55)":"none"}}>
+                {active && <motion.div layoutId={journey.id+"-variant-pill"} transition={SPRING.snappy} style={{position:"absolute",inset:0,background:"var(--ink-1)",zIndex:0}}/>}
+                <div style={{position:"relative",zIndex:1}}>
+                  <div className="num" style={{fontSize:11,fontWeight:700,letterSpacing:".12em",opacity:active?.65:.45,marginBottom:10}}>0{idx+1}</div>
+                  <div style={{fontSize:15,fontWeight:700,letterSpacing:"-.015em",marginBottom:5,lineHeight:1.25}}>{labels[key] || key}</div>
+                  <div style={{fontSize:11,color:active?"rgba(255,255,255,.68)":"var(--ink-3)",lineHeight:1.35}}>{descs[key]}</div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </LayoutGroup>
+    </div>
+  );
+}
 
 /* ============================================================
    CJM SECTION
@@ -1386,11 +1568,14 @@ function MobileStepNav({current, total, onPrev, onNext}){
 function CJMSection({activeJourney, activeStep, setActiveStep, showMetrics, payMode, setPayMode}){
   const j = journeys[activeJourney];
   const hasVariants = !!j.variants;
-  const steps = hasVariants ? j.variants[payMode] : j.steps;
+  const variantKeys = hasVariants ? Object.keys(j.variants) : [];
+  const currentMode = hasVariants && j.variants[payMode] ? payMode : variantKeys[0];
+  const steps = hasVariants ? j.variants[currentMode] : j.steps;
   const safeStep = Math.min(activeStep, steps.length - 1);
   const step = steps[safeStep];
   return (
     <section className="section" style={{maxWidth:1320, margin:"0 auto", padding:"50px 40px 100px", position:"relative"}}>
+      <VariantToggle journey={j} activeMode={currentMode} setMode={setPayMode}/>
       <ProgressRail steps={steps} active={safeStep} onPick={setActiveStep}/>
       <div className="work-grid" style={{display:"grid", gridTemplateColumns:"minmax(340px, 0.9fr) minmax(0, 1.2fr)", gap:80, alignItems:"start"}}>
         <div className="phone-wrap" style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:20}}>
@@ -1451,6 +1636,34 @@ function BenefitGroup({eyebrow, title, sub, items, accentMode}){
     </div>
   );
 }
+
+function VisionSection(){
+  const [ref, inView] = useReveal(true, 0.15);
+  return (
+    <section ref={ref} className="section" style={{maxWidth:1320, margin:"0 auto", padding:"10px 40px 70px"}}>
+      <motion.div initial={{opacity:0, y:20}} animate={inView?{opacity:1, y:0}:{}} transition={{duration:0.7, ease:EASE}} style={{background:"linear-gradient(135deg, var(--ink-1), #17386e)", borderRadius:"var(--radius-xl)", padding:"42px", color:"#fff", position:"relative", overflow:"hidden"}}>
+        <div style={{position:"absolute",right:-80,top:-120,width:360,height:360,borderRadius:"50%",background:"rgba(46,174,238,0.28)",filter:"blur(20px)"}}/>
+        <div style={{position:"relative",zIndex:1,display:"grid",gridTemplateColumns:"minmax(0,0.9fr) minmax(0,1.25fr)",gap:34,alignItems:"start"}} className="hero-grid">
+          <div>
+            <div className="eyebrow" style={{color:"rgba(255,255,255,0.65)",marginBottom:16}}>Видение · Аэрофлот Pay будущего</div>
+            <h3 style={{fontSize:"clamp(34px,4.6vw,64px)",fontWeight:800,letterSpacing:"-.045em",lineHeight:1.02,margin:"0 0 16px",textWrap:"balance"}}>Кошелёк как финансовое ядро поездки</h3>
+            <p style={{fontSize:16,lineHeight:1.55,color:"rgba(255,255,255,0.72)",margin:0,maxWidth:500}}>Вау-эффект не в наборе отдельных функций, а в предсказуемости: кошелёк понимает контекст рейса, снижает тревожность пассажира и предлагает действие до того, как клиент пойдёт в поддержку.</p>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:10}} className="bento-grid">
+            {futureVisionCards.map((c,i)=>(
+              <motion.div key={i} initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.55,ease:EASE,delay:i*0.04}} style={{background:"rgba(255,255,255,0.08)",border:"1px solid rgba(255,255,255,0.12)",borderRadius:18,padding:18,backdropFilter:"blur(14px)"}}>
+                <div style={{width:38,height:38,borderRadius:12,background:"var(--lime)",color:"var(--ink-1)",display:"flex",alignItems:"center",justifyContent:"center",marginBottom:14}}><Ico d={ICONS[c.icon]} size={20}/></div>
+                <div style={{fontSize:15,fontWeight:750,letterSpacing:"-.01em",marginBottom:7}}>{c.title}</div>
+                <div style={{fontSize:12.5,lineHeight:1.45,color:"rgba(255,255,255,0.64)"}}>{c.desc}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
 function BenefitsSection(){
   return (
     <section className="section" style={{maxWidth:1320, margin:"0 auto", padding:"30px 40px 70px"}}>
@@ -1498,6 +1711,7 @@ function App(){
       <Navbar showMetrics={showMetrics} setShowMetrics={setShowMetrics} scrolled={scrolled}/>
       <Hero activeJourney={activeJourney} setActiveJourney={setActiveJourney}/>
       <CJMSection activeJourney={activeJourney} activeStep={activeStep} setActiveStep={setActiveStep} showMetrics={showMetrics} payMode={payMode} setPayMode={setPayMode}/>
+      <VisionSection/>
       <BenefitsSection/>
       <Footer/>
     </div>
