@@ -183,7 +183,7 @@ const journeys=[
   online:[
     {title:"Онлайн-покупка билета",zone:"Аэрофлот Бонус · online",screen:"shop_product",desc:"Клиент выбирает рейс в приложении Аэрофлота. Подсвечивается выгода оплаты через Аэрофлот Кошелёк: +1000 миль.",metricPartner:"Выгода Аэрофлот Кошелька видна уже в карточке рейса",metricBank:"Узнаваемость Аэрофлот Кошелька в каталоге партнёра"},
     {title:"Добавил в корзину",zone:"Аэрофлот Бонус · online",screen:"cart",desc:"Билет в корзине. Баннер «+1000 миль при оплате Аэрофлот Кошельком» рядом с итоговой суммой.",metricPartner:"Бонусный баннер в корзине — стимул завершить заказ",metricBank:"Напоминание об Аэрофлот Кошельке в корзине"},
-    {title:"Перешёл в оформление",zone:"Аэрофлот Бонус · online",screen:"checkout_methods",desc:"Оформление заказа, выбор способа оплаты среди СБП, SberPay, Яндекс Пэй и Аэрофлот Кошелёк.",metricPartner:"Аэрофлот Кошелёк — в списке способов оплаты",metricBank:"Присутствие среди привычных способов оплаты"},
+    {title:"Перешёл в оформление",zone:"Аэрофлот Бонус · online",screen:"checkout_methods",desc:"Оформление заказа, выбор способа оплаты среди СБП, SberPay и Аэрофлот Кошелёк.",metricPartner:"Аэрофлот Кошелёк — в списке способов оплаты",metricBank:"Присутствие среди привычных способов оплаты"},
     {title:"Оплатил билет",zone:"Аэрофлот Бонус · online",screen:"paid",desc:"Оплата прошла в один тап. +1000 миль начислено на счёт лояльности.",metricPartner:"Оплата в один тап, бонусы начислены",metricBank:"Завершённая транзакция по Аэрофлот Кошельку"},
   ],
   flight:[
@@ -643,7 +643,7 @@ const SCREENS = {
     <div style={{padding:16}}>
       <PTitle t="Способ оплаты" s="Аэрофлот Кошелёк привязан автоматически"/>
       <div style={{marginTop:12}}>
-        {[{n:"Аэрофлот Кошелёк",sel:true,tag:"ga"},{n:"СБП",sel:false},{n:"SberPay",sel:false},{n:"Яндекс Пэй",sel:false}].map((m,i)=>(
+        {[{n:"Аэрофлот Кошелёк",sel:true,tag:"ga"},{n:"СБП",sel:false},{n:"SberPay",sel:false}].map((m,i)=>(
           <div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"11px 12px",borderRadius:11,marginBottom:7,border:m.sel?"1.5px solid var(--ink-1)":"1px solid var(--phone-line-1)",background:m.sel?"var(--phone-surf)":"#fff"}}>
             {m.tag==="ga"?<GAMark size={22} radius={6}/>:<div style={{width:22,height:22,borderRadius:6,background:"var(--phone-surf)",border:"1px solid var(--phone-line-1)"}}/>}
             <span style={{flex:1,fontSize:13,fontWeight:m.sel?700:500,color:"var(--phone-text-1)"}}>{m.n}</span>
